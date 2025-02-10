@@ -1,14 +1,15 @@
+/* For screens up to 1400px */
 @media screen and (max-width: 1400px) {
   #profile {
-    height: 83vh;
-    margin-bottom: 6rem;
+    height: auto;
+    margin-bottom: 4rem;
   }
-
   .about-container {
     flex-wrap: wrap;
   }
 }
 
+/* For screens up to 1200px */
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none;
@@ -26,6 +27,7 @@
   #profile,
   .section-container {
     display: block;
+    text-align: center;
   }
 
   .arrow {
@@ -34,37 +36,35 @@
 
   section,
   .section-container {
-    height: fit-content;
-  }
-
-  section {
+    height: auto;
     margin: 0 5%;
   }
 
   .section_pic-container {
-    width: 275px;
-    height: 275px;
+    width: 250px;
+    height: 250px;
     margin: 0 auto 2rem;
-  }
-
-  .about-container {
-    margin-top: 0;
   }
 }
 
-@media screen and (max-width: 600px) {
+/* For screens up to 768px (tablets and smaller devices) */
+@media screen and (max-width: 768px) {
   #contact,
   footer {
-    height: 40vh;
+    height: auto;
+    padding-bottom: 2rem;
   }
+
   #profile {
-    height: 83vh;
+    height: auto;
     margin-bottom: 0;
+    padding: 2rem;
   }
 
   article {
     font-size: 1rem;
   }
+
   footer nav {
     height: fit-content;
     margin-bottom: 2rem;
@@ -74,14 +74,19 @@
   .contact-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
+    justify-content: center;
   }
+
   .contact-info-container {
     margin: 0;
+    text-align: center;
   }
+
   .contact-info-container p,
   .nav-links li a {
     font-size: 1rem;
   }
+
   .experience-sub-title {
     font-size: 1.25rem;
   }
@@ -95,19 +100,60 @@
     gap: 0.5rem;
     text-align: center;
   }
+
   .section_pic-container {
-    width: auto;
-    height: 46vw;
+    width: 200px;
+    height: 200px;
     justify-content: center;
   }
 
   .section_text_p2 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
+
   .title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
+
   .text-container {
     text-align: justify;
+  }
+}
+
+/* For screens up to 480px (mobile devices) */
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .section_text_p2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .section_pic-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .contact-info-container p {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
   }
 }
