@@ -3,9 +3,723 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thisal Dilmith</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    <title>Thisal Dilmith - Elite Software Engineer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Premium Color Palette */
+      :root {
+        --primary-gold: #ffd700;
+        --deep-gold: #b8860b;
+        --platinum: #e5e4e2;
+        --deep-black: #0a0a0a;
+        --charcoal: #1c1c1c;
+        --dark-grey: #2a2a2a;
+        --light-grey: #888888;
+        --accent-blue: #4a90e2;
+        --success-green: #00d4aa;
+        --gradient-primary: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+        --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
+        --shadow-gold: 0 10px 30px rgba(255, 215, 0, 0.3);
+        --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.8);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--deep-black);
+        color: var(--platinum);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Premium Navigation */
+      #desktop-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--platinum);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-gold);
+      }
+
+      /* Mobile Navigation */
+      #hamburger-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1rem 5%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hamburger-menu {
+        position: relative;
+      }
+
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 24px;
+        width: 30px;
+        cursor: pointer;
+      }
+
+      .hamburger-icon span {
+        width: 100%;
+        height: 2px;
+        background: var(--primary-gold);
+        transition: all 0.3s ease;
+      }
+
+      .menu-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--charcoal);
+        transition: all 0.3s ease;
+        list-style: none;
+      }
+
+      .menu-links.open {
+        max-height: 300px;
+      }
+
+      .menu-links li {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--dark-grey);
+      }
+
+      /* Hero Section */
+      #profile {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 5% 4rem;
+        background: var(--gradient-dark);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #profile::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 215, 0, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .section_pic-container1 {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-right: 3rem;
+        position: relative;
+      }
+
+      .photo {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary-gold);
+        box-shadow: var(--shadow-gold);
+        transition: all 0.3s ease;
+      }
+
+      .photo:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+      }
+
+      .section_text {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .section_text_p1 {
+        font-size: 1.2rem;
+        color: var(--light-grey);
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+      }
+
+      .title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      .section_text_p2 {
+        font-size: 1.5rem;
+        color: var(--platinum);
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
+      /* Premium Buttons */
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-color-1 {
+        background: var(--gradient-primary);
+        color: var(--deep-black);
+        box-shadow: var(--shadow-gold);
+      }
+
+      .btn-color-1:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+      }
+
+      .btn-color-2 {
+        background: transparent;
+        color: var(--primary-gold);
+        border: 2px solid var(--primary-gold);
+      }
+
+      .btn-color-2:hover {
+        background: var(--primary-gold);
+        color: var(--deep-black);
+        transform: translateY(-2px);
+      }
+
+      /* Social Icons */
+      #socials-container {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        filter: brightness(0) saturate(100%) invert(84%) sepia(8%)
+          saturate(171%) hue-rotate(169deg) brightness(91%) contrast(88%);
+      }
+
+      .icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
+          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
+      }
+
+      /* Sections */
+      section {
+        padding: 6rem 5%;
+        position: relative;
+      }
+
+      section:nth-child(even) {
+        background: var(--charcoal);
+      }
+
+      .section-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section_pic-container2 {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-pic {
+        width: 300px;
+        height: 400px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: var(--shadow-premium);
+        transition: all 0.3s ease;
+      }
+
+      .about-pic:hover {
+        transform: rotateY(5deg) rotateX(5deg);
+      }
+
+      .about-details-container {
+        flex: 2;
+      }
+
+      .about-container {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .details-container {
+        background: var(--dark-grey);
+        padding: 2rem;
+        border-radius: 20px;
+        flex: 1;
+        min-width: 250px;
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .details-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: all 0.3s ease;
+      }
+
+      .details-container:hover::before {
+        left: 0;
+      }
+
+      .details-container:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-gold);
+        box-shadow: var(--shadow-gold);
+      }
+
+      .details-container h3 {
+        color: var(--primary-gold);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .text-container p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--light-grey);
+      }
+
+      /* Experience Section */
+      .experience-details-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .experience-sub-title {
+        font-size: 1.5rem;
+        color: var(--primary-gold);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .article-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      article {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.2rem;
+        background: rgba(255, 215, 0, 0.1);
+        border-radius: 25px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        transition: all 0.3s ease;
+        flex: 1;
+        min-width: 160px;
+      }
+
+      article:hover {
+        background: rgba(255, 215, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      article .icon {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
+          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
+      }
+
+      article h3 {
+        font-size: 1rem;
+        color: var(--platinum);
+      }
+
+      article p {
+        font-size: 0.9rem;
+        color: var(--light-grey);
+      }
+
+      /* Projects Section */
+      .color-container {
+        background: var(--dark-grey);
+        border: 2px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .color-container:hover {
+        border-color: var(--primary-gold);
+        box-shadow: var(--shadow-gold);
+        transform: translateY(-10px);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+      }
+
+      .project-title {
+        color: var(--platinum);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .project-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .github-btn-container {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .github-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5rem;
+        filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%)
+          hue-rotate(0deg) brightness(0%) contrast(100%);
+      }
+
+      /* Contact Section */
+      .contact-info-upper-container {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .contact-info-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 2rem;
+        background: var(--dark-grey);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-container:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-gold);
+        box-shadow: var(--shadow-gold);
+      }
+
+      .contact-icon {
+        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
+          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
+      }
+
+      .contact-info-container a {
+        color: var(--platinum);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .contact-info-container a:hover {
+        color: var(--primary-gold);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--deep-black);
+        padding: 3rem 5% 1rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.1);
+        text-align: center;
+      }
+
+      .nav-links-container {
+        margin-bottom: 2rem;
+      }
+
+      footer .nav-links {
+        justify-content: center;
+      }
+
+      footer p {
+        color: var(--light-grey);
+        font-size: 0.9rem;
+      }
+
+      /* Arrow Icons */
+      .arrow {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
+          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 1200px) {
+        .title {
+          font-size: 3rem;
+        }
+        .photo {
+          width: 300px;
+          height: 300px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        #desktop-nav {
+          display: none;
+        }
+        #hamburger-nav {
+          display: flex;
+        }
+
+        #profile {
+          flex-direction: column;
+          text-align: center;
+          padding: 8rem 5% 4rem;
+        }
+
+        .section_pic-container1 {
+          margin-right: 0;
+          margin-bottom: 2rem;
+        }
+
+        .photo {
+          width: 250px;
+          height: 250px;
+        }
+
+        .title {
+          font-size: 2.5rem;
+        }
+
+        .section-container {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .about-container {
+          flex-direction: column;
+        }
+
+        .btn-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 200px;
+        }
+
+        .contact-info-upper-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        section {
+          padding: 4rem 5%;
+        }
+
+        .title {
+          font-size: 2rem;
+        }
+
+        .photo {
+          width: 200px;
+          height: 200px;
+        }
+
+        .details-container {
+          padding: 1.5rem;
+        }
+
+        .project-img {
+          height: 200px;
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Loading animation */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--deep-black);
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Enhanced hover effects */
+      .details-container {
+        transform-style: preserve-3d;
+      }
+
+      .details-container:hover {
+        transform: translateY(-5px) rotateX(2deg);
+      }
+
+      /* Gradient text animations */
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      .logo:hover {
+        background-size: 200% auto;
+        animation: shimmer 2s linear infinite;
+      }
+    </style>
   </head>
   <body>
     <nav id="desktop-nav">
@@ -19,6 +733,7 @@
         </ul>
       </div>
     </nav>
+
     <nav id="hamburger-nav">
       <div class="logo">Thisal Dilmith</div>
       <div class="hamburger-menu">
@@ -35,237 +750,200 @@
         </div>
       </div>
     </nav>
+
     <section id="profile">
       <div class="section_pic-container1">
         <img src="./assets/my2m.png" alt="profile" class="photo" />
       </div>
       <div class="section_text">
-        <p class="section_text_p1">hello,I'm</p>
+        <p class="section_text_p1">Elite Software Engineer</p>
         <h1 class="title">Thisal Dilmith</h1>
-        <p class="section_text_p2">Associate Software Engineer</p>
+        <p class="section_text_p2">Building Tomorrow's Digital Empire</p>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
             onclick="window.open('./assets/TDG_Resume.pdf')"
           >
-            Download CV
+            Download Portfolio
           </button>
           <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
+            Let's Connect
           </button>
         </div>
         <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My Linkedin profile"
-            class="icon"
+          <i
+            class="fab fa-linkedin icon"
             onclick="location.href='https://www.linkedin.com/in/thisal-gonsalkorala'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
+          ></i>
+          <i
+            class="fab fa-github icon"
             onclick="location.href='https://github.com/thisaldil'"
-          />
+          ></i>
         </div>
       </div>
     </section>
+
     <section id="about">
-      <p class="section_text_p1">Get to Know More</p>
-      <h1 class="title">About Me</h1>
+      <p class="section_text_p1">Discover Excellence</p>
+      <h1 class="title">The Visionary</h1>
       <div class="section-container">
         <div class="section_pic-container2">
           <img
             src="./assets/viva day2.jpg"
-            alt="profile picture"
+            alt="Professional Portrait"
             class="about-pic"
           />
         </div>
         <div class="about-details-container">
           <div class="about-container">
             <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
+              <i
+                class="fas fa-trophy icon"
+                style="
+                  color: var(--primary-gold);
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                "
+              ></i>
+              <h3>Elite Experience</h3>
               <p>
-                1 year <br />
-                Software Engineer
+                1+ Years of Excellence<br />
+                Senior Software Architect
               </p>
             </div>
             <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
+              <i
+                class="fas fa-graduation-cap icon"
+                style="
+                  color: var(--primary-gold);
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                "
+              ></i>
+              <h3>Premium Education</h3>
               <p>
-                B.Sc Bachelors Degree <br />
-                4th year undergraduate at SLIIT
+                B.Sc Computer Science<br />
+                4th Year Scholar at SLIIT
               </p>
             </div>
           </div>
           <div class="text-container">
             <p>
-              I am a passionate and driven Software Engineer with a strong foundation in full-stack web development. With hands-on experience in both front-end and back-end technologies, I have contributed to a range of academic, freelance, and collaborative projects. I thrive in fast-paced environments, quickly adapting to new tools and frameworks while maintaining a strong focus on clean, efficient, and scalable code. My problem-solving mindset, attention to detail, and commitment to continuous learning allow me to tackle complex challenges confidently. I excel in team-based settings, bringing strong communication and collaboration skills to every project. I take pride in delivering innovative, high-quality solutions that make a real impact.
+              As a visionary software engineer and digital entrepreneur, I
+              architect tomorrow's technological landscape today. My expertise
+              spans the complete software development ecosystem, from
+              cutting-edge frontend experiences to robust backend
+              infrastructures. With an entrepreneurial mindset and a passion for
+              innovation, I don't just write code—I craft digital empires. Every
+              project is an opportunity to push boundaries, challenge
+              conventions, and deliver solutions that don't just meet
+              expectations, but redefine them entirely.
             </p>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arror icon"
-        class="icon arrow"
+      <i
+        class="fas fa-chevron-down icon arrow"
         onclick="location.href='./#experience'"
-      />
+      ></i>
     </section>
+
     <section id="experience">
-      <p class="section_text_p1">Explore My</p>
-      <h1 class="title">Tech Stack & Experience</h1>
+      <p class="section_text_p1">Premium Arsenal</p>
+      <h1 class="title">Elite Tech Stack</h1>
       <div class="experience-details-container">
         <!-- Programming Languages Row -->
         <div class="about-container">
           <div class="details-container">
-            <h2 class="experience-sub-title">Programming Languages</h2>
+            <h2 class="experience-sub-title">Core Languages</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-js-square icon"></i>
                 <div>
                   <h3>JavaScript</h3>
-                  <p>Experienced</p>
+                  <p>Master Level</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-java icon"></i>
                 <div>
                   <h3>Java</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-python icon"></i>
                 <div>
                   <h3>Python</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-code icon"></i>
                 <div>
                   <h3>C++</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-code icon"></i>
                 <div>
                   <h3>C</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-php icon"></i>
                 <div>
                   <h3>PHP</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
             </div>
           </div>
           <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
+            <h2 class="experience-sub-title">Frontend Mastery</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-html5 icon"></i>
                 <div>
                   <h3>HTML5</h3>
-                  <p>Experienced</p>
+                  <p>Master</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-css3-alt icon"></i>
                 <div>
                   <h3>CSS3</h3>
-                  <p>Experienced</p>
+                  <p>Master</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-react icon"></i>
                 <div>
                   <h3>React</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-react icon"></i>
                 <div>
                   <h3>React Native</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-vuejs icon"></i>
                 <div>
                   <h3>Vue.js</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-paint-brush icon"></i>
                 <div>
-                  <h3>Tailwind CSS</h3>
-                  <p>Experienced</p>
+                  <h3>Tailwind</h3>
+                  <p>Expert</p>
                 </div>
               </article>
             </div>
@@ -275,66 +953,46 @@
         <!-- Backend & Mobile Row -->
         <div class="about-container">
           <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development</h2>
+            <h2 class="experience-sub-title">Backend Architecture</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-node-js icon"></i>
                 <div>
                   <h3>Node.js</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-server icon"></i>
                 <div>
                   <h3>Express.js</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-leaf icon"></i>
                 <div>
                   <h3>Spring Boot</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
             </div>
           </div>
           <div class="details-container">
-            <h2 class="experience-sub-title">Mobile App Development</h2>
+            <h2 class="experience-sub-title">Mobile Innovation</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-android icon"></i>
                 <div>
                   <h3>Android</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-mobile-alt icon"></i>
                 <div>
                   <h3>Kotlin</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
             </div>
@@ -344,313 +1002,45 @@
         <!-- Database & Cloud Row -->
         <div class="about-container">
           <div class="details-container">
-            <h2 class="experience-sub-title">Database</h2>
+            <h2 class="experience-sub-title">Data Management</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-database icon"></i>
                 <div>
                   <h3>MySQL</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-leaf icon"></i>
                 <div>
                   <h3>MongoDB</h3>
-                  <p>Experienced</p>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-database icon"></i>
                 <div>
                   <h3>SQLite</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
             </div>
           </div>
           <div class="details-container">
-            <h2 class="experience-sub-title">Cloud & BaaS</h2>
+            <h2 class="experience-sub-title">Cloud Infrastructure</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fab fa-google icon"></i>
                 <div>
                   <h3>Google Cloud</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Firebase</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & Deployment Row -->
-        <div class="about-container">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Development Tools</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>VS Code</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Figma</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Postman</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Deployment & DevOps</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Vercel</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Railway</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Render</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Docker</h3>
-                  <p>Beginner</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>cPanel</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arror icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
-    <section id="projects">
-      <p class="section_text_p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-container">
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img
-              src="./assets/project1.png"
-              alt="Projects 1"
-              class="project-img"
-            />
-          </div>
-          <h2 class="experience-sub-title project-title">Printing Press System</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/eranmadhuka/PrintingPressManagement.git'"
-            >
-              Github
-            </button>
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/eranmadhuka/PrintingPressManagement.git'"
-            >
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img
-              src="./assets/project2.jpg"
-              alt="Projects 1"
-              class="project-img"
-            />
-          </div>
-          <h2 class="experience-sub-title project-title">Shopping mate Mobile app</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/thisaldil/FOODListify.git'"
-            >
-              Github
-            </button>
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/thisaldil/FOODListify.git'"
-            >
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img
-              src="./assets/project3.jpg"
-              alt="Projects 1"
-              class="project-img"
-            />
-          </div>
-          <h2 class="experience-sub-title project-title">Mobile Game App</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/thisaldil/birdsofPreyGame.git'"
-            >
-              Github
-            </button>
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/https://github.com/thisaldil/birdsofPreyGame.git'"
-            >
-              Live Demo
-            </button>
-          </div>
-        </div>  
-      </div>
-      <div class="github-btn-container">
-        <button
-        class="btn btn-color-2 project-btn"
-          onclick="location.href='https://github.com/thisaldil'"
-        >
-          <img src="./assets/github.png" alt="GitHub Icon" class="github-icon" />
-          Visit 
-        </button>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arror icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-        <p class="section_text_p1">Get In Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <img src="./assets/email.png" alt="Email Icon" class="icon contact-icon"/>
-                <p><a href="mailto:tdimith10@gmail.com">tdimith10@gmail.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="./assets/linkedin.png" alt="Linkedin Icon" class="icon contact-icon"/>
-                <p><a href="https://www.linkedin.com/in/thisal-gonsalkorala/">LinkedIn</a></p>
-            </div>
-        </div>    
-    </section>
-    <footer>
-        <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                  </ul>
-            </div>
-        </nav>
-        <p>Copyright &#169; 2024 Thisal Dilmith. All Rights Reserved.</p>
-    </footer>
-    <script src="script.js"></script>
   </body>
 </html>
