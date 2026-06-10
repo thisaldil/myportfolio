@@ -1,1421 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thisal Dilmith - Elite Software Engineer</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Premium Color Palette */
-      :root {
-        --primary-gold: #ffd700;
-        --deep-gold: #b8860b;
-        --platinum: #e5e4e2;
-        --deep-black: #0a0a0a;
-        --charcoal: #1c1c1c;
-        --dark-grey: #2a2a2a;
-        --light-grey: #888888;
-        --accent-blue: #4a90e2;
-        --success-green: #00d4aa;
-        --gradient-primary: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
-        --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
-        --shadow-gold: 0 10px 30px rgba(255, 215, 0, 0.3);
-        --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.8);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        background: var(--deep-black);
-        color: var(--platinum);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      /* Premium Navigation */
-      #desktop-nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(20px);
-        z-index: 1000;
-        padding: 1rem 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .logo {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -0.02em;
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-
-      .nav-links a {
-        color: var(--platinum);
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 0.5rem 1rem;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: var(--gradient-primary);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary-gold);
-      }
-
-      /* Mobile Navigation */
-      #hamburger-nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(20px);
-        z-index: 1000;
-        padding: 1rem 5%;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .hamburger-menu {
-        position: relative;
-      }
-
-      .hamburger-icon {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 24px;
-        width: 30px;
-        cursor: pointer;
-      }
-
-      .hamburger-icon span {
-        width: 100%;
-        height: 2px;
-        background: var(--primary-gold);
-        transition: all 0.3s ease;
-      }
-
-      .menu-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100vw;
-        max-height: 0;
-        overflow: hidden;
-        background: var(--charcoal);
-        transition: all 0.3s ease;
-        list-style: none;
-      }
-
-      .menu-links.open {
-        max-height: 300px;
-      }
-
-      .menu-links li {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid var(--dark-grey);
-      }
-
-      /* Hero Section */
-      #profile {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8rem 5% 4rem;
-        background: var(--gradient-dark);
-        position: relative;
-        overflow: hidden;
-      }
-
-      #profile::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(255, 215, 0, 0.1) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-
-      .section_pic-container1 {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        margin-right: 3rem;
-        position: relative;
-      }
-
-      .photo {
-        width: 350px;
-        height: 350px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid var(--primary-gold);
-        box-shadow: var(--shadow-gold);
-        transition: all 0.3s ease;
-      }
-
-      .photo:hover {
-        transform: scale(1.05);
-        box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
-      }
-
-      .section_text {
-        flex: 1;
-        max-width: 600px;
-      }
-
-      .section_text_p1 {
-        font-size: 1.2rem;
-        color: var(--light-grey);
-        margin-bottom: 0.5rem;
-        font-weight: 400;
-      }
-
-      .title {
-        font-size: 4rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1.2;
-      }
-
-      .section_text_p2 {
-        font-size: 1.5rem;
-        color: var(--platinum);
-        margin-bottom: 2rem;
-        font-weight: 300;
-      }
-
-      /* Premium Buttons */
-      .btn-container {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .btn {
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-color-1 {
-        background: var(--gradient-primary);
-        color: var(--deep-black);
-        box-shadow: var(--shadow-gold);
-      }
-
-      .btn-color-1:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
-      }
-
-      .btn-color-2 {
-        background: transparent;
-        color: var(--primary-gold);
-        border: 2px solid var(--primary-gold);
-      }
-
-      .btn-color-2:hover {
-        background: var(--primary-gold);
-        color: var(--deep-black);
-        transform: translateY(-2px);
-      }
-
-      /* Social Icons */
-      #socials-container {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .icon {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        filter: brightness(0) saturate(100%) invert(84%) sepia(8%)
-          saturate(171%) hue-rotate(169deg) brightness(91%) contrast(88%);
-      }
-
-      .icon:hover {
-        transform: translateY(-3px) scale(1.1);
-        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
-          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
-      }
-
-      /* Sections */
-      section {
-        padding: 6rem 5%;
-        position: relative;
-      }
-
-      section:nth-child(even) {
-        background: var(--charcoal);
-      }
-
-      .section-container {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .section_pic-container2 {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-      }
-
-      .about-pic {
-        width: 300px;
-        height: 400px;
-        border-radius: 20px;
-        object-fit: cover;
-        box-shadow: var(--shadow-premium);
-        transition: all 0.3s ease;
-      }
-
-      .about-pic:hover {
-        transform: rotateY(5deg) rotateX(5deg);
-      }
-
-      .about-details-container {
-        flex: 2;
-      }
-
-      .about-container {
-        display: flex;
-        gap: 2rem;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .details-container {
-        background: var(--dark-grey);
-        padding: 2rem;
-        border-radius: 20px;
-        flex: 1;
-        min-width: 250px;
-        border: 1px solid rgba(255, 215, 0, 0.1);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .details-container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background: var(--gradient-primary);
-        transition: all 0.3s ease;
-      }
-
-      .details-container:hover::before {
-        left: 0;
-      }
-
-      .details-container:hover {
-        transform: translateY(-5px);
-        border-color: var(--primary-gold);
-        box-shadow: var(--shadow-gold);
-      }
-
-      .details-container h3 {
-        color: var(--primary-gold);
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .text-container p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--light-grey);
-      }
-
-      /* Experience Section */
-      .experience-details-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .experience-sub-title {
-        font-size: 1.5rem;
-        color: var(--primary-gold);
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-
-      .article-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      article {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.2rem;
-        background: rgba(255, 215, 0, 0.1);
-        border-radius: 25px;
-        border: 1px solid rgba(255, 215, 0, 0.2);
-        transition: all 0.3s ease;
-        flex: 1;
-        min-width: 160px;
-      }
-
-      article:hover {
-        background: rgba(255, 215, 0, 0.2);
-        transform: translateY(-2px);
-      }
-
-      article .icon {
-        width: 20px;
-        height: 20px;
-        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
-          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
-      }
-
-      article h3 {
-        font-size: 1rem;
-        color: var(--platinum);
-      }
-
-      article p {
-        font-size: 0.9rem;
-        color: var(--light-grey);
-      }
-
-      /* Projects Section */
-      .color-container {
-        background: var(--dark-grey);
-        border: 2px solid rgba(255, 215, 0, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .color-container:hover {
-        border-color: var(--primary-gold);
-        box-shadow: var(--shadow-gold);
-        transform: translateY(-10px);
-      }
-
-      .project-img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 15px;
-        margin-bottom: 1rem;
-      }
-
-      .project-title {
-        color: var(--platinum);
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-
-      .project-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-      }
-
-      .github-btn-container {
-        text-align: center;
-        margin-top: 3rem;
-      }
-
-      .github-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 0.5rem;
-        filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%)
-          hue-rotate(0deg) brightness(0%) contrast(100%);
-      }
-
-      /* Contact Section */
-      .contact-info-upper-container {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        margin-top: 2rem;
-      }
-
-      .contact-info-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem 2rem;
-        background: var(--dark-grey);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 215, 0, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .contact-info-container:hover {
-        transform: translateY(-5px);
-        border-color: var(--primary-gold);
-        box-shadow: var(--shadow-gold);
-      }
-
-      .contact-icon {
-        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
-          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
-      }
-
-      .contact-info-container a {
-        color: var(--platinum);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .contact-info-container a:hover {
-        color: var(--primary-gold);
-      }
-
-      /* Footer */
-      footer {
-        background: var(--deep-black);
-        padding: 3rem 5% 1rem;
-        border-top: 1px solid rgba(255, 215, 0, 0.1);
-        text-align: center;
-      }
-
-      .nav-links-container {
-        margin-bottom: 2rem;
-      }
-
-      footer .nav-links {
-        justify-content: center;
-      }
-
-      footer p {
-        color: var(--light-grey);
-        font-size: 0.9rem;
-      }
-
-      /* Arrow Icons */
-      .arrow {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 30px;
-        height: 30px;
-        filter: brightness(0) saturate(100%) invert(84%) sepia(66%)
-          saturate(4174%) hue-rotate(34deg) brightness(103%) contrast(104%);
-        animation: bounce 2s infinite;
-      }
-
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateX(-50%) translateY(0);
-        }
-        40% {
-          transform: translateX(-50%) translateY(-10px);
-        }
-        60% {
-          transform: translateX(-50%) translateY(-5px);
-        }
-      }
-
-      /* Responsive Design */
-      @media screen and (max-width: 1200px) {
-        .title {
-          font-size: 3rem;
-        }
-        .photo {
-          width: 300px;
-          height: 300px;
-        }
-      }
-
-      @media screen and (max-width: 768px) {
-        #desktop-nav {
-          display: none;
-        }
-        #hamburger-nav {
-          display: flex;
-        }
-
-        #profile {
-          flex-direction: column;
-          text-align: center;
-          padding: 8rem 5% 4rem;
-        }
-
-        .section_pic-container1 {
-          margin-right: 0;
-          margin-bottom: 2rem;
-        }
-
-        .photo {
-          width: 250px;
-          height: 250px;
-        }
-
-        .title {
-          font-size: 2.5rem;
-        }
-
-        .section-container {
-          flex-direction: column;
-          gap: 2rem;
-        }
-
-        .about-container {
-          flex-direction: column;
-        }
-
-        .btn-container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .btn {
-          width: 200px;
-        }
-
-        .contact-info-upper-container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .nav-links {
-          flex-wrap: wrap;
-          gap: 1rem;
-        }
-      }
-
-      @media screen and (max-width: 480px) {
-        section {
-          padding: 4rem 5%;
-        }
-
-        .title {
-          font-size: 2rem;
-        }
-
-        .photo {
-          width: 200px;
-          height: 200px;
-        }
-
-        .details-container {
-          padding: 1.5rem;
-        }
-
-        .project-img {
-          height: 200px;
-        }
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Loading animation */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--deep-black);
-        z-index: 9999;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-
-      /* Enhanced hover effects */
-      .details-container {
-        transform-style: preserve-3d;
-      }
-
-      .details-container:hover {
-        transform: translateY(-5px) rotateX(2deg);
-      }
-
-      /* Gradient text animations */
-      @keyframes shimmer {
-        0% {
-          background-position: -200% center;
-        }
-        100% {
-          background-position: 200% center;
-        }
-      }
-
-      .logo:hover {
-        background-size: 200% auto;
-        animation: shimmer 2s linear infinite;
-      }
-    </style>
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Thisal Dilmith</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thisal Dilmith · Software Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       DESKTOP NAV
+  ══════════════════════════════════════════ -->
+  <nav id="desktop-nav">
+    <div class="nav-left">
+      <div class="logo">in</div>
+      <div class="nav-search">
+        <i class="fas fa-search" style="font-size:0.86rem;"></i>
+        <span>Search</span>
       </div>
-    </nav>
+    </div>
 
-    <nav id="hamburger-nav">
-      <div class="logo">Thisal Dilmith</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
+    <ul class="nav-links">
+      <li><a href="#profile" class="active"><i class="fas fa-user"></i>Profile</a></li>
+      <li><a href="#about"><i class="fas fa-info-circle"></i>About</a></li>
+      <li><a href="#experience"><i class="fas fa-briefcase"></i>Experience</a></li>
+      <li><a href="#projects"><i class="fas fa-code"></i>Projects</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
 
-    <section id="profile">
-      <div class="section_pic-container1">
-        <img src="./assets/me.jpg" alt="profile" class="photo" />
-      </div>
-      <div class="section_text">
-        <p class="section_text_p1">Elite Software Engineer</p>
-        <h1 class="title">Thisal Dilmith</h1>
-        <p class="section_text_p2">Building Tomorrow's Digital Empire</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/TDG_Resume.pdf')"
-          >
-            Download Resume
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Let's Connect
-          </button>
-        </div>
-        <div id="socials-container">
-          <i
-            class="fab fa-linkedin icon"
-            onclick="location.href='https://www.linkedin.com/in/thisal-gonsalkorala'"
-          ></i>
-          <i
-            class="fab fa-github icon"
-            onclick="location.href='https://github.com/thisaldil'"
-          ></i>
-        </div>
-      </div>
-    </section>
+    <div class="nav-right">
+      <button class="btn-nav-primary" onclick="window.open('./assets/TDG_Resume.pdf')">
+        <i class="fas fa-download" style="margin-right:4px;font-size:0.79rem;"></i>Resume
+      </button>
+    </div>
+  </nav>
 
-    <section id="about">
-      <p class="section_text_p1">Discover Excellence</p>
-      <h1 class="title">The Visionary</h1>
-      <div class="section-container">
-        <div class="section_pic-container2">
-          <img
-            src="./assets/viva day2.jpg"
-            alt="Professional Portrait"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-container">
-            <div class="details-container">
-              <i
-                class="fas fa-trophy icon"
-                style="
-                  color: var(--primary-gold);
-                  font-size: 2rem;
-                  margin-bottom: 1rem;
-                "
-              ></i>
-              <h3>Elite Experience</h3>
-              <p>
-                1+ Years of Excellence<br />
-                Associate Software Engineer
-              </p>
+  <!-- ══════════════════════════════════════════
+       MOBILE NAV
+  ══════════════════════════════════════════ -->
+  <nav id="hamburger-nav">
+    <div class="logo">in</div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="menu-links">
+        <li><a href="#profile"   onclick="toggleMenu()">Profile</a></li>
+        <li><a href="#about"     onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a href="#projects"  onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#contact"   onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       PAGE BODY
+  ══════════════════════════════════════════ -->
+  <div class="page-body">
+    <div class="content-grid">
+
+      <!-- ── 1. PROFILE HERO CARD ────────────── -->
+      <div class="card" id="profile">
+        <div class="profile-banner-gradient"></div>
+
+        <div class="profile-info-row">
+          <div class="profile-avatar-wrap">
+            <!-- Replace src with ./assets/me.jpg when deploying -->
+            <div class="profile-avatar-ring">TD</div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:-2rem; margin-bottom:0.5rem; gap:8px;">
+            <a href="https://www.linkedin.com/in/thisal-gonsalkorala/" target="_blank" class="btn-ghost" style="font-size:0.79rem;">
+              <i class="fab fa-linkedin" style="color:#0A66C2;"></i> LinkedIn
+            </a>
+            <a href="https://github.com/thisaldil" target="_blank" class="btn-ghost" style="font-size:0.79rem;">
+              <i class="fab fa-github" style="color:#1D2226;"></i> GitHub
+            </a>
+          </div>
+
+          <h1 class="profile-name">Thisal Dilmith Gonsalkorala</h1>
+          <p class="profile-headline">Software Engineer · Final Year Undergraduate at SLIIT · Team Lead @ EduSense</p>
+
+          <div class="profile-meta">
+            <span><i class="fas fa-map-marker-alt" style="font-size:0.79rem;"></i> Malabe, Western Province, Sri Lanka</span>
+            <span class="profile-meta-divider">·</span>
+            <a href="#contact" class="profile-connections">Contact info</a>
+          </div>
+
+          <div class="profile-companies">
+            <div class="company-badge">
+              <div class="company-logo">AB</div>
+              <span>ABMSZ</span>
             </div>
-            <div class="details-container">
-              <i
-                class="fas fa-graduation-cap icon"
-                style="
-                  color: var(--primary-gold);
-                  font-size: 2rem;
-                  margin-bottom: 1rem;
-                "
-              ></i>
-              <h3>Premium Education</h3>
-              <p>
-                B.Sc Information Technology<br />
-                4th Year Scholar at SLIIT
-              </p>
+            <div class="company-badge">
+              <div class="company-logo" style="background:#e05c2c;">SL</div>
+              <span>SLIIT</span>
             </div>
           </div>
-          <div class="text-container">
+
+          <div class="profile-actions">
+            <button class="btn-primary" onclick="location.href='#contact'">
+              <i class="fas fa-paper-plane"></i> Message
+            </button>
+            <button class="btn-secondary" onclick="window.open('./assets/TDG_Resume.pdf')">
+              <i class="fas fa-download"></i> Download CV
+            </button>
+            <button class="btn-ghost">
+              <i class="fas fa-user-plus"></i> Connect
+            </button>
+            <button class="btn-ghost">
+              <i class="fas fa-ellipsis-h"></i> More
+            </button>
+          </div>
+        </div>
+
+        <!-- Open to Work Banner -->
+        <div style="padding: 0 var(--sp-xl) var(--sp-xl);">
+          <div class="open-to-work-banner">
+            <span class="open-badge">OPEN TO WORK</span>
+            <p class="open-text">
+              <strong>Software Engineer, Full-Stack Developer, React Native Developer</strong><br>
+              Available for internships &amp; full-time roles · Sri Lanka &amp; Remote
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 2. ABOUT CARD ───────────────────── -->
+      <div class="card" id="about">
+        <div class="card-body">
+          <h2 class="section-title">About</h2>
+          <div class="about-text" id="about-text">
             <p>
-              As a visionary software engineer and digital entrepreneur, I
-              architect tomorrow's technological landscape today. My expertise
-              spans the complete software development ecosystem, from
-              cutting-edge frontend experiences to robust backend
-              infrastructures. With an entrepreneurial mindset and a passion for
-              innovation, I don't just write code—I craft digital empires. Every
-              project is an opportunity to push boundaries, challenge
-              conventions, and deliver solutions that don't just meet
-              expectations, but redefine them entirely.
+              Final-year <strong>BSc (Hons) Information Technology</strong> undergraduate at SLIIT with a builder's mindset and
+              an entrepreneurial edge. I architect end-to-end systems — from pixel-perfect frontends to
+              robust backend infrastructures — and ship products that solve real problems in real markets.
+            </p>
+            <br>
+            <p id="about-extra" style="display:none;">
+              Currently leading <strong>EduSense</strong>, a neuro-adaptive learning platform for Sri Lankan Grade 6 science,
+              as both team lead and ML engineer. I work across the full stack: React, Node.js, Fastify,
+              PostgreSQL/PostGIS, Python ML pipelines, and React Native mobile apps. I also manage interns
+              at ABMSZ, running onboarding, code reviews, and sprint cycles.
+              <br><br>
+              Outside of work I am building <strong>Gevora</strong> — a Sri Lankan property portal — and exploring
+              lo-fi / village-life content creation under <em>@dr.lateorious</em>. Every project is a chance
+              to push the craft further.
             </p>
           </div>
-        </div>
-      </div>
-      <i
-        class="fas fa-chevron-down icon arrow"
-        onclick="location.href='./#experience'"
-      ></i>
-    </section>
-
-    <section id="experience">
-      <p class="section_text_p1">Premium Arsenal</p>
-      <h1 class="title">Elite Tech Stack</h1>
-      <div class="experience-details-container">
-        <!-- Programming Languages Row -->
-        <div class="about-container">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Core Languages</h2>
-            <div class="article-container">
-              <article>
-                <i class="fab fa-js-square icon"></i>
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Master Level</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-java icon"></i>
-                <div>
-                  <h3>Java</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-python icon"></i>
-                <div>
-                  <h3>Python</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-code icon"></i>
-                <div>
-                  <h3>C++</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-code icon"></i>
-                <div>
-                  <h3>C</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-php icon"></i>
-                <div>
-                  <h3>PHP</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Mastery</h2>
-            <div class="article-container">
-              <article>
-                <i class="fab fa-html5 icon"></i>
-                <div>
-                  <h3>HTML5</h3>
-                  <p>Master</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-css3-alt icon"></i>
-                <div>
-                  <h3>CSS3</h3>
-                  <p>Master</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-react icon"></i>
-                <div>
-                  <h3>React</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-react icon"></i>
-                <div>
-                  <h3>React Native</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-vuejs icon"></i>
-                <div>
-                  <h3>Vue.js</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-paint-brush icon"></i>
-                <div>
-                  <h3>Tailwind</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <!-- Backend & Mobile Row -->
-        <div class="about-container">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Backend Architecture</h2>
-            <div class="article-container">
-              <article>
-                <i class="fab fa-node-js icon"></i>
-                <div>
-                  <h3>Node.js</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-server icon"></i>
-                <div>
-                  <h3>Express.js</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-leaf icon"></i>
-                <div>
-                  <h3>Spring Boot</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Mobile Innovation</h2>
-            <div class="article-container">
-              <article>
-                <i class="fab fa-android icon"></i>
-                <div>
-                  <h3>Android</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-mobile-alt icon"></i>
-                <div>
-                  <h3>Kotlin</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <!-- Database & Cloud Row -->
-        <div class="about-container">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Data Management</h2>
-            <div class="article-container">
-              <article>
-                <i class="fas fa-database icon"></i>
-                <div>
-                  <h3>MySQL</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-leaf icon"></i>
-                <div>
-                  <h3>MongoDB</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-database icon"></i>
-                <div>
-                  <h3>SQLite</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Cloud Infrastructure</h2>
-            <div class="article-container">
-              <article>
-                <i class="fab fa-google icon"></i>
-                <div>
-                  <h3>Google Cloud</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-fire icon"></i>
-                <div>
-                  <h3>Firebase</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & Deployment Row -->
-        <div class="about-container">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Development Arsenal</h2>
-            <div class="article-container">
-              <article>
-                <i class="fas fa-code icon"></i>
-                <div>
-                  <h3>VS Code</h3>
-                  <p>Master</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-git-alt icon"></i>
-                <div>
-                  <h3>Git</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-palette icon"></i>
-                <div>
-                  <h3>Figma</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-rocket icon"></i>
-                <div>
-                  <h3>Postman</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Deployment & DevOps</h2>
-            <div class="article-container">
-              <article>
-                <i class="fas fa-bolt icon"></i>
-                <div>
-                  <h3>Vercel</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-train icon"></i>
-                <div>
-                  <h3>Railway</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-server icon"></i>
-                <div>
-                  <h3>Render</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <i class="fab fa-docker icon"></i>
-                <div>
-                  <h3>Docker</h3>
-                  <p>Learning</p>
-                </div>
-              </article>
-              <article>
-                <i class="fas fa-cogs icon"></i>
-                <div>
-                  <h3>cPanel</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <i
-        class="fas fa-chevron-down icon arrow"
-        onclick="location.href='./#projects'"
-      ></i>
-    </section>
-
-    <section id="projects">
-      <p class="section_text_p1">Elite Portfolio</p>
-      <h1 class="title">Signature Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-container">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project1.png"
-                alt="Printing Press Management System"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">
-              Elite Printing Press System
-            </h2>
-            <p
-              style="
-                color: var(--light-grey);
-                text-align: center;
-                margin-bottom: 1rem;
-                font-size: 0.9rem;
-                line-height: 1.6;
-              "
-            >
-              Enterprise-grade printing press management solution with advanced
-              workflow automation, real-time inventory tracking, and
-              comprehensive analytics dashboard.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/eranmadhuka/PrintingPressManagement.git'"
-              >
-                <i class="fab fa-github" style="margin-right: 0.5rem"></i>
-                Source Code
-              </button>
-              <button
-                class="btn btn-color-1 project-btn"
-                onclick="location.href='https://github.com/eranmadhuka/PrintingPressManagement.git'"
-              >
-                <i
-                  class="fas fa-external-link-alt"
-                  style="margin-right: 0.5rem"
-                ></i>
-                Live Demo
-              </button>
-            </div>
-          </div>
-
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project2.jpg"
-                alt="Shopping Mate Mobile Application"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">ShoppingMate Pro</h2>
-            <p
-              style="
-                color: var(--light-grey);
-                text-align: center;
-                margin-bottom: 1rem;
-                font-size: 0.9rem;
-                line-height: 1.6;
-              "
-            >
-              Revolutionary mobile shopping companion with AI-powered
-              recommendations, smart list management, and seamless e-commerce
-              integration.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/thisaldil/FOODListify.git'"
-              >
-                <i class="fab fa-github" style="margin-right: 0.5rem"></i>
-                Source Code
-              </button>
-              <button
-                class="btn btn-color-1 project-btn"
-                onclick="location.href='https://github.com/thisaldil/FOODListify.git'"
-              >
-                <i class="fas fa-mobile-alt" style="margin-right: 0.5rem"></i>
-                App Demo
-              </button>
-            </div>
-          </div>
-
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project3.jpg"
-                alt="Birds of Prey Mobile Game"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">
-              Birds of Prey Elite
-            </h2>
-            <p
-              style="
-                color: var(--light-grey);
-                text-align: center;
-                margin-bottom: 1rem;
-                font-size: 0.9rem;
-                line-height: 1.6;
-              "
-            >
-              Next-generation mobile gaming experience with advanced physics
-              engine, immersive graphics, and competitive multiplayer gameplay.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/thisaldil/birdsofPreyGame.git'"
-              >
-                <i class="fab fa-github" style="margin-right: 0.5rem"></i>
-                Source Code
-              </button>
-              <button
-                class="btn btn-color-1 project-btn"
-                onclick="location.href='https://github.com/thisaldil/birdsofPreyGame.git'"
-              >
-                <i class="fas fa-gamepad" style="margin-right: 0.5rem"></i>
-                Play Game
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="github-btn-container">
-          <button
-            class="btn btn-color-2 project-btn"
-            onclick="location.href='https://github.com/thisaldil'"
-            style="
-              padding: 1.2rem 3rem;
-              font-size: 1.1rem;
-              background: var(--gradient-primary);
-              color: var(--deep-black);
-              border: none;
-            "
-          >
-            <i
-              class="fab fa-github"
-              style="margin-right: 0.8rem; font-size: 1.2rem"
-            ></i>
-            Explore My Github
+          <button class="show-more-btn" id="about-toggle" onclick="toggleAbout()">
+            Show more <i class="fas fa-chevron-down" style="font-size:0.79rem;"></i>
           </button>
         </div>
       </div>
-      <i
-        class="fas fa-chevron-down icon arrow"
-        onclick="location.href='./#contact'"
-      ></i>
-    </section>
 
-    <section id="contact">
-      <p class="section_text_p1">Executive Network</p>
-      <h1 class="title">Connect With Excellence</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <i
-            class="fas fa-envelope icon contact-icon"
-            style="color: var(--primary-gold); font-size: 1.5rem"
-          ></i>
-          <p><a href="mailto:tdimith10@gmail.com">tdimith10@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <i
-            class="fab fa-linkedin icon contact-icon"
-            style="color: var(--primary-gold); font-size: 1.5rem"
-          ></i>
-          <p>
-            <a href="https://www.linkedin.com/in/thisal-gonsalkorala/"
-              >Linkedin Profile</a
-            >
-          </p>
+      <!-- ── 3. FEATURED PROJECTS (ACTIVITY) ── -->
+      <div class="card" id="projects">
+        <div class="card-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-lg);">
+            <h2 class="section-title" style="margin-bottom:0;">Featured Projects</h2>
+            <a href="https://github.com/thisaldil" target="_blank" style="font-size:0.86rem;font-weight:600;display:flex;align-items:center;gap:4px;">
+              All projects <i class="fas fa-arrow-right" style="font-size:0.79rem;"></i>
+            </a>
+          </div>
+
+          <div class="featured-grid" style="margin-bottom:var(--sp-xl);">
+            <div class="featured-item" onclick="window.open('https://github.com/thisaldil/FOODListify')">
+              <div class="featured-img-placeholder">🛒</div>
+              <div class="featured-item-body">
+                <div class="featured-item-title">ShoppingMate Pro</div>
+                <div class="featured-item-sub">React Native · Node.js · MongoDB</div>
+              </div>
+            </div>
+            <div class="featured-item" onclick="window.open('https://github.com/thisaldil/birdsofPreyGame')">
+              <div class="featured-img-placeholder">🎮</div>
+              <div class="featured-item-body">
+                <div class="featured-item-title">Birds of Prey Game</div>
+                <div class="featured-item-sub">Android · Kotlin · Physics Engine</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project List -->
+          <div class="divider"></div>
+
+          <div class="project-card" onclick="window.open('https://github.com/eranmadhuka/PrintingPressManagement')">
+            <div class="project-thumb">
+              <div class="project-thumb-placeholder">🖨️</div>
+            </div>
+            <div class="project-info">
+              <div class="project-name">Elite Printing Press Management System</div>
+              <div class="project-stack">Java · Spring Boot · MySQL · HTML/CSS/JS</div>
+              <div class="project-desc">Enterprise-grade printing press management with workflow automation, real-time inventory tracking, and analytics dashboard for operations management.</div>
+              <div class="project-links">
+                <a href="https://github.com/eranmadhuka/PrintingPressManagement" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i> Source
+                </a>
+                <a href="https://github.com/eranmadhuka/PrintingPressManagement" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" onclick="window.open('https://github.com/thisaldil/FOODListify')">
+            <div class="project-thumb">
+              <div class="project-thumb-placeholder">🛒</div>
+            </div>
+            <div class="project-info">
+              <div class="project-name">ShoppingMate Pro</div>
+              <div class="project-stack">React Native · Expo · Node.js · MongoDB · Express</div>
+              <div class="project-desc">AI-powered mobile shopping companion with smart list management, adaptive difficulty, and seamless e-commerce integration. Full REST API with Postman-tested endpoints.</div>
+              <div class="project-links">
+                <a href="https://github.com/thisaldil/FOODListify" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i> Source
+                </a>
+                <a href="https://github.com/thisaldil/FOODListify" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fas fa-mobile-alt"></i> App Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" onclick="window.open('https://github.com/thisaldil/birdsofPreyGame')">
+            <div class="project-thumb">
+              <div class="project-thumb-placeholder">🎮</div>
+            </div>
+            <div class="project-info">
+              <div class="project-name">Birds of Prey Elite — Mobile Game</div>
+              <div class="project-stack">Android · Kotlin · Physics Engine · Multiplayer</div>
+              <div class="project-desc">Next-generation mobile gaming experience with advanced physics, immersive graphics, competitive multiplayer, and a custom game loop engine.</div>
+              <div class="project-links">
+                <a href="https://github.com/thisaldil/birdsofPreyGame" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i> Source
+                </a>
+                <a href="https://github.com/thisaldil/birdsofPreyGame" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fas fa-gamepad"></i> Play
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-thumb">
+              <div class="project-thumb-placeholder">🧠</div>
+            </div>
+            <div class="project-info">
+              <div class="project-name">EduSense — Neuro-Adaptive Learning Platform</div>
+              <div class="project-stack">Python · Random Forest · LLM/RAG · React · Node.js · XTTS v2</div>
+              <div class="project-desc">BSc final-year research: cognitive-linguistic text adaptation engine for Grade 6 Sri Lankan science using ML classifiers, RAG-based rewriting, and rule-based NLP validation. Team lead, 4 members.</div>
+              <div class="project-links">
+                <a href="#" class="project-link-btn">
+                  <i class="fas fa-flask"></i> Research
+                </a>
+                <a href="#" class="project-link-btn">
+                  <i class="fas fa-file-alt"></i> Paper
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="show-more-row">
+            <a href="https://github.com/thisaldil" target="_blank">
+              Show all projects <i class="fas fa-arrow-right" style="font-size:0.79rem;"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </section>
 
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+      <!-- ── 4. EXPERIENCE ──────────────────── -->
+      <div class="card" id="experience">
+        <div class="card-body">
+          <h2 class="section-title">Experience</h2>
+
+          <div class="timeline-item">
+            <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Associate Software Engineer · Intern Supervisor</div>
+              <div class="timeline-sub">ABMSZ · Full-time</div>
+              <div class="timeline-date">2024 – Present · Sri Lanka</div>
+              <div class="timeline-desc">
+                Managing software development interns — onboarding, task allocation via Jira/Trello,
+                sprint reviews, code reviews, and progress tracking. Contributing to enterprise web
+                application development and client delivery.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Research Team Lead — EduSense</div>
+              <div class="timeline-sub">SLIIT Final Year Research Project · Academic</div>
+              <div class="timeline-date">2025 – 2026 · Sri Lanka</div>
+              <div class="timeline-desc">
+                Led a 4-person research team building a neuro-adaptive learning platform.
+                Owned the Cognitive-Linguistic Adaptation Engine component: Random Forest classifiers,
+                LLM/RAG text adaptation, rule-based NLP validation, and Sri Lankan English TTS integration.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="timeline-content">
+              <div class="timeline-title">Freelance Full-Stack Developer</div>
+              <div class="timeline-sub">Self-employed · Remote</div>
+              <div class="timeline-date">2023 – Present</div>
+              <div class="timeline-desc">
+                Built and deployed multiple production platforms: ULSS Inventories (enterprise automotive
+                asset management), Gevora (Sri Lankan property portal with PostGIS &amp; Elasticsearch),
+                VehicleZone ecosystem, and client automotive web UIs.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- ── 5. SKILLS ──────────────────────── -->
+      <div class="card">
+        <div class="card-body">
+          <h2 class="section-title">Skills</h2>
+
+          <p class="section-eyebrow" style="margin-bottom:var(--sp-md);">Core Languages</p>
+          <div class="skills-grid" style="margin-bottom:var(--sp-xl);">
+            <span class="skill-pill"><i class="fab fa-js-square"></i> JavaScript <span class="skill-endorsement">★ Master</span></span>
+            <span class="skill-pill"><i class="fab fa-java"></i> Java <span class="skill-endorsement">★ Expert</span></span>
+            <span class="skill-pill"><i class="fab fa-python"></i> Python <span class="skill-endorsement">Advanced</span></span>
+            <span class="skill-pill"><i class="fas fa-code"></i> C / C++ <span class="skill-endorsement">Expert</span></span>
+            <span class="skill-pill"><i class="fab fa-php"></i> PHP <span class="skill-endorsement">Expert</span></span>
+          </div>
+
+          <p class="section-eyebrow" style="margin-bottom:var(--sp-md);">Frontend</p>
+          <div class="skills-grid" style="margin-bottom:var(--sp-xl);">
+            <span class="skill-pill"><i class="fab fa-react"></i> React</span>
+            <span class="skill-pill"><i class="fab fa-react"></i> React Native</span>
+            <span class="skill-pill"><i class="fab fa-vuejs"></i> Vue.js</span>
+            <span class="skill-pill"><i class="fab fa-html5"></i> HTML5</span>
+            <span class="skill-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span class="skill-pill"><i class="fas fa-paint-brush"></i> Tailwind CSS</span>
+            <span class="skill-pill"><i class="fas fa-layer-group"></i> Next.js</span>
+          </div>
+
+          <p class="section-eyebrow" style="margin-bottom:var(--sp-md);">Backend &amp; Data</p>
+          <div class="skills-grid" style="margin-bottom:var(--sp-xl);">
+            <span class="skill-pill"><i class="fab fa-node-js"></i> Node.js</span>
+            <span class="skill-pill"><i class="fas fa-server"></i> Express.js</span>
+            <span class="skill-pill"><i class="fas fa-bolt"></i> Fastify</span>
+            <span class="skill-pill"><i class="fas fa-leaf"></i> Spring Boot</span>
+            <span class="skill-pill"><i class="fas fa-database"></i> MySQL</span>
+            <span class="skill-pill"><i class="fas fa-leaf"></i> MongoDB</span>
+            <span class="skill-pill"><i class="fas fa-database"></i> PostgreSQL / PostGIS</span>
+            <span class="skill-pill"><i class="fas fa-search"></i> Elasticsearch</span>
+          </div>
+
+          <p class="section-eyebrow" style="margin-bottom:var(--sp-md);">DevOps &amp; Tools</p>
+          <div class="skills-grid">
+            <span class="skill-pill"><i class="fab fa-git-alt"></i> Git</span>
+            <span class="skill-pill"><i class="fab fa-docker"></i> Docker</span>
+            <span class="skill-pill"><i class="fas fa-fire"></i> Firebase</span>
+            <span class="skill-pill"><i class="fab fa-google"></i> Google Cloud</span>
+            <span class="skill-pill"><i class="fas fa-bolt"></i> Vercel</span>
+            <span class="skill-pill"><i class="fas fa-palette"></i> Figma</span>
+            <span class="skill-pill"><i class="fas fa-robot"></i> ML / RAG / LLM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 6. EDUCATION ───────────────────── -->
+      <div class="card">
+        <div class="card-body">
+          <h2 class="section-title">Education</h2>
+
+          <div class="edu-item">
+            <div class="edu-logo">SLIIT</div>
+            <div class="timeline-content">
+              <div class="timeline-title">BSc (Honours) Information Technology</div>
+              <div class="timeline-sub">Sri Lanka Institute of Information Technology (SLIIT)</div>
+              <div class="timeline-date">2022 – 2026 · Malabe, Sri Lanka</div>
+              <div class="timeline-desc">
+                Specialisation in Software Engineering. Final Year Research: EduSense —
+                Neuro-Adaptive Learning Platform. Student ID: IT22551252.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 7. CONTACT ─────────────────────── -->
+      <div class="card" id="contact">
+        <div class="card-body">
+          <h2 class="section-title">Contact Info</h2>
+
+          <div class="contact-row">
+            <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:tdimith10@gmail.com">tdimith10@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon-wrap"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <a href="https://www.linkedin.com/in/thisal-gonsalkorala/" target="_blank">
+                  linkedin.com/in/thisal-gonsalkorala
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon-wrap"><i class="fab fa-github"></i></div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">
+                <a href="https://github.com/thisaldil" target="_blank">github.com/thisaldil</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Malabe, Western Province, Sri Lanka</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /content-grid -->
+  </div><!-- /page-body -->
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">in</div>
+      <nav class="footer-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/thisaldil" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/thisal-gonsalkorala/" target="_blank">LinkedIn</a>
       </nav>
-      <p>
-        Copyright © 2024 Thisal Dilmith. Elite Software Engineering Portfolio.
-      </p>
-    </footer>
+      <p class="footer-copy">© 2024 Thisal Dilmith Gonsalkorala · Elite Software Engineering Portfolio</p>
+    </div>
+  </footer>
 
-    <script>
-      function toggleMenu() {
-        const menu = document.querySelector(".menu-links");
-        const icon = document.querySelector(".hamburger-icon");
-        menu.classList.toggle("open");
-        icon.classList.toggle("open");
-      }
+  <!-- ══════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════ -->
+  <script>
+    /* Mobile menu toggle */
+    function toggleMenu() {
+      const menu = document.querySelector('.menu-links');
+      menu.classList.toggle('open');
+    }
 
-      // Smooth scroll behavior for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
+    /* About show more */
+    function toggleAbout() {
+      const extra  = document.getElementById('about-extra');
+      const toggle = document.getElementById('about-toggle');
+      const isOpen = extra.style.display === 'block';
+      extra.style.display = isOpen ? 'none' : 'block';
+      toggle.innerHTML = isOpen
+        ? 'Show more <i class="fas fa-chevron-down" style="font-size:0.79rem;"></i>'
+        : 'Show less <i class="fas fa-chevron-up"   style="font-size:0.79rem;"></i>';
+    }
+
+    /* Active nav link on scroll */
+    const sections = document.querySelectorAll('section, [id]');
+    const navLinks  = document.querySelectorAll('#desktop-nav .nav-links a');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+
+    document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+
+    /* Smooth-scroll for anchor links */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
-
-      // Add scroll effect to navigation
-      window.addEventListener("scroll", function () {
-        const nav = document.getElementById("desktop-nav");
-        const hamburgerNav = document.getElementById("hamburger-nav");
-
-        if (window.scrollY > 100) {
-          nav.style.background = "rgba(10, 10, 10, 0.98)";
-          hamburgerNav.style.background = "rgba(10, 10, 10, 0.98)";
-        } else {
-          nav.style.background = "rgba(10, 10, 10, 0.95)";
-          hamburgerNav.style.background = "rgba(10, 10, 10, 0.95)";
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
+    });
+  </script>
 
-      // Enhanced hover effects for project cards
-      document.querySelectorAll(".color-container").forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          this.style.transform = "translateY(-15px) rotateX(5deg)";
-          this.style.boxShadow = "0 25px 50px rgba(255, 215, 0, 0.4)";
-        });
-
-        card.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(0) rotateX(0)";
-          this.style.boxShadow = "var(--shadow-gold)";
-        });
-      });
-
-      // Parallax effect for hero section
-      window.addEventListener("scroll", function () {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector("#profile");
-        const speed = scrolled * 0.2;
-
-        if (parallax) {
-          parallax.style.transform = `translateY(${speed}px)`;
-        }
-      });
-
-      // Animate elements on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections for animation
-      document.querySelectorAll("section").forEach((section) => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(30px)";
-        section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        observer.observe(section);
-      });
-
-      // Initialize first section as visible
-      document.querySelector("#profile").style.opacity = "1";
-      document.querySelector("#profile").style.transform = "translateY(0)";
-    </script>
-  </body>
+</body>
 </html>
