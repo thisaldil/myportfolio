@@ -824,3 +824,16 @@ footer {
   .profile-info-row { padding: 0 var(--sp-md) var(--sp-lg); }
   .card-body { padding: var(--sp-lg); }
 }
+.profile-banner-gradient{
+    position:relative;
+    overflow:hidden;
+}
+
+.banner-lottie{
+    position:absolute;
+    right:20px;
+    bottom:0;
+
+    width:220px;
+    height:220px;
+}
