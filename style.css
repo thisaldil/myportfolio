@@ -258,37 +258,58 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .profile-info-row {
-  padding: 0 var(--sp-xl) var(--sp-xl);
-  position: relative;
-}
+    position: relative;
 
+    padding-top: 100px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+}
 .profile-avatar-wrap {
-  position: relative;
-  display: inline-block;
-  margin-top: -54px;
-  margin-bottom: var(--sp-md);
-}
+    position: absolute;
 
-.profile-avatar {
-  width: 108px; height: 108px;
-  border-radius: var(--radius-circle);
-  border: 3px solid var(--li-surface);
-  object-fit: cover;
-  background: var(--li-bg);
+    left: 24px;
+    top: -70px;
+
+    z-index: 100;
 }
 
 .profile-avatar-ring {
-  width: 108px; height: 108px;
-  border-radius: var(--radius-circle);
-  border: 3px solid var(--li-surface);
-  background: linear-gradient(135deg, #0A66C2, #004182);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: white;
-  letter-spacing: -0.03em;
+    width: 160px;
+    height: 160px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    border: 5px solid white;
+    background: white;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
+
+.profile-banner-gradient {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-banner-gradient img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 .profile-name {
   font-size: 1.57rem;
   font-weight: 700;
@@ -853,6 +874,40 @@ footer {
 }
 
 .floating-assistant video{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.profile-avatar-ring {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    border: 3px solid white;
+    overflow: hidden;
+    background: white;
+}
+
+.profile-info-row{
+    position: relative;
+}
+
+.profile-side-video{
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+
+    width: 140px;
+    height: 140px;
+}
+
+.profile-side-video video{
     width: 100%;
     height: 100%;
     object-fit: contain;

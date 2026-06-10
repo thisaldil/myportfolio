@@ -56,36 +56,33 @@
       </ul>
     </div>
   </nav>
+<!-- ══════════════════════════════════════════
+     PAGE BODY
+══════════════════════════════════════════ -->
+<div class="page-body">
+  <div class="content-grid">
 
-  <!-- ══════════════════════════════════════════
-       PAGE BODY
-  ══════════════════════════════════════════ -->
-  <div class="page-body">
-    <div class="content-grid">
+    <!-- ── 1. PROFILE HERO CARD ────────────── -->
+    <div class="card" id="profile">
 
-      <!-- ── 1. PROFILE HERO CARD ────────────── -->
-      <div class="card" id="profile">
-        <div class="profile-banner-gradient">
-    <video class="banner-character"
-           autoplay
-           muted
-           loop
-           playsinline>
-        <source src="./assets/Man using laptop.webm" type="video/webm">
-    </video>
-</div>
+      <div class="profile-banner-gradient">
+        <img
+          src="./assets/banner (2).png"
+          alt="Banner"
+        />
+      </div>
 
-        <div class="profile-info-row">
-          <div class="profile-avatar-wrap">
-            <!-- Replace src with ./assets/me.jpg when deploying -->
-          <div class="profile-banner-gradient">
-    <img
-        src="./assets/linkdin.jpeg"
-        alt="Thisal"
-        class="banner-photo"
-    >
-</div>
+      <div class="profile-info-row">
+
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar-ring">
+            <img
+              src="./assets/linkdin.jpeg"
+              alt="Thisal"
+              class="profile-avatar"
+            />
           </div>
+        </div>
 
           <div style="display:flex; justify-content:flex-end; margin-top:-2rem; margin-bottom:0.5rem; gap:8px;">
             <a href="https://www.linkedin.com/in/thisal-gonsalkorala/" target="_blank" class="btn-ghost" style="font-size:0.79rem;">
@@ -117,19 +114,28 @@
           </div>
 
           <div class="profile-actions">
-            <button class="btn-primary" onclick="location.href='#contact'">
-              <i class="fas fa-paper-plane"></i> Message
-            </button>
-            <button class="btn-secondary" onclick="window.open('./assets/TDG_Resume.pdf')">
-              <i class="fas fa-download"></i> Download CV
-            </button>
-            <button class="btn-ghost">
-              <i class="fas fa-user-plus"></i> Connect
-            </button>
-            <button class="btn-ghost">
-              <i class="fas fa-ellipsis-h"></i> More
-            </button>
-          </div>
+  <button class="btn-primary" onclick="location.href='#contact'">
+    <i class="fas fa-paper-plane"></i> Message
+  </button>
+
+  <button class="btn-secondary" onclick="window.open('./assets/TDG_Resume.pdf')">
+    <i class="fas fa-download"></i> Download CV
+  </button>
+
+  <button class="btn-ghost">
+    <i class="fas fa-user-plus"></i> Connect
+  </button>
+
+  <button class="btn-ghost">
+    <i class="fas fa-ellipsis-h"></i> More
+  </button>
+</div>
+
+<div class="profile-side-video">
+  <video autoplay muted loop playsinline>
+    <source src="./assets/flat.mp4" type="video/mp4">
+  </video>
+</div>
         </div>
 
         <!-- Open to Work Banner -->
@@ -521,15 +527,7 @@
       });
     });
   </script>
-  <div class="floating-assistant">
-    <video
-        autoplay
-        muted
-        loop
-        playsinline>
-        <source src="./assets/flat.mp4" type="video/webm">
-    </video>
-</div>
+  
 
 </body>
 </html>
