@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js" type="module"></script>
 </head>
 <body>
 
@@ -102,16 +103,22 @@
             <a href="#contact" class="profile-connections">Contact info</a>
           </div>
 
-          <div class="profile-companies">
-            <div class="company-badge">
-              <div class="company-logo">AB</div>
-              <span>ABMSZ</span>
-            </div>
-            <div class="company-badge">
-              <div class="company-logo" style="background:#e05c2c;">SL</div>
-              <span>SLIIT</span>
-            </div>
-          </div>
+         <div class="profile-companies">
+  <div class="company-badge">
+    <div class="company-logo">
+      <img src="assets/abmsz.png" alt="ABMSZ Logo">
+    </div>
+    <span>ABMSZ</span>
+  </div>
+  
+  <div class="company-badge">
+    <!-- Removed inline background color since the image will cover it -->
+    <div class="company-logo">
+      <img src="assets/sliit.png" alt="SLIIT Logo">
+    </div>
+    <span>SLIIT</span>
+  </div>
+</div>
 
           <div class="profile-actions">
   <button class="btn-primary" onclick="location.href='#contact'">
@@ -526,8 +533,39 @@
         }
       });
     });
-  </script>
+
+    /* ══════════════════════════════════════════
+     SCROLL DIRECTION TRACKER FOR LOTTIE
+   ══════════════════════════════════════════ */
+let lastScrollTop = 0;
+const lottieContainer = document.getElementById('scroll-lottie-container');
+
+window.addEventListener('scroll', function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
+  // Guard clause: ignore micro-scroll adjustments or bounce-back mechanics at limits
+  if (scrollTop < 10) {
+    lottieContainer.classList.remove('lottie-visible');
+    lottieContainer.classList.add('lottie-hidden');
+    return;
+  }
+
+  if (scrollTop > lastScrollTop) {
+    // User is scrolling Down -> Show Lottie
+    lottieContainer.classList.remove('lottie-hidden');
+    lottieContainer.classList.add('lottie-visible');
+  } else {
+    // User is scrolling Up -> Hide Lottie
+    lottieContainer.classList.remove('lottie-visible');
+    lottieContainer.classList.add('lottie-hidden');
+  }
+  
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Update position safely
+}, { passive: true });
+  </script>
+<div id="scroll-lottie-container" class="lottie-hidden">
+  <dotlottie-wc src="https://lottie.host/20c11b9d-a00c-42bb-b8b6-e254bc99428e/KUZPZoku4y.lottie" style="width: 250px; height: 250px;" autoplay loop></dotlottie-wc>
+</div>
 
 </body>
 </html>
